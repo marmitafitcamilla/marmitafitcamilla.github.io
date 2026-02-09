@@ -3,19 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marmita Fit da Camilla 🍃</title>
-    <meta name="description" content=" ">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Marmita Fit da Camilla 🍃">
-    <meta property="og:description" content=" ">
-    <meta property="og:image" content="https://marmitafitcamilla.github.io/images/og/image4.jpg">
-    <meta property="og:url" content="https://marmitafitcamilla.github.io/redirects/d">
 
     <!-- Meta Refresh (redirect automático) -->
     <meta http-equiv="refresh" content="2">
 
+    <!-- Open Graph / WhatsApp Preview -->
+    <meta property="og:title" content="Marmita Fit da Camilla 🍃">
+    <meta property="og:description" content=" ">
+    <meta property="og:image" content="https://marmitafitcamilla.github.io/images/og/image4.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://marmitafitcamilla.github.io/redirects/d">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Marmita Fit da Camilla 🍃">
+    <meta name="twitter:description" content=" ">
+    <meta name="twitter:image" content="https://marmitafitcamilla.github.io/images/og/image4.jpg">
+
+    <title>Marmita Fit da Camilla 🍃</title>
+
     <style>
+        :root {
+            --primary-color: #25D366;
+            --card-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            --border-radius: 24px;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -23,16 +38,31 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
+            padding: 1rem;
             color: white;
-            padding: 2rem;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
         }
 
         .hero-image {
@@ -41,90 +71,152 @@
             height: 200px;
             object-fit: cover;
             border-radius: 20px;
-            margin-bottom: 2rem;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
         }
 
-        .container {
-            max-width: 500px;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        .hero-image:hover {
+            transform: scale(1.02);
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-weight: 800;
             margin-bottom: 1rem;
-            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
         }
 
         .whatsapp-btn {
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
-            background: #25D366;
+            background: var(--primary-color);
             color: white;
-            padding: 1rem 2rem;
+            padding: 1.2rem 2.5rem;
             border-radius: 50px;
             text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-top: 2rem;
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            font-weight: 700;
+            margin: 1.5rem 0;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4);
+            border: none;
+            cursor: pointer;
         }
 
         .whatsapp-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 20px 45px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-btn:active {
+            transform: translateY(-1px);
         }
 
         .countdown {
+            margin-top: 1.5rem;
             font-size: 1.1rem;
-            margin-top: 1rem;
             opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        #timer {
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            background: rgba(255,255,255,0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            display: inline-block;
+            min-width: 2ch;
+        }
+
+        /* Responsivo */
+        @media (max-width: 480px) {
+            .container {
+                padding: 2rem 1.5rem;
+                margin: 1rem;
+            }
+
+            .hero-image {
+                max-width: 100%;
+                height: 180px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animação de fade out quando countdown zerar */
+        .countdown.fade-out {
+            opacity: 0;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <img src="https://marmitafitcamilla.github.io/images/og/og-logo.png" alt="Marmita Fit da Camilla 🍃" class="hero-image">
+
         <h1>Marmita Fit da Camilla 🍃</h1>
         <p> </p>
 
         <a href="https://wa.me/5521980927987?text=Olá! Vi seu post no grupo e gostaria de fazer meu pedido de Marmita Fit!" class="whatsapp-btn" id="whatsapp-btn">
             💬 Enviar mensagem no WhatsApp
         </a>
+
         <div class="countdown" id="countdown">
             Redirecionando em <span id="timer">2</span> segundos...
         </div>
     </div>
 
     <script>
-        let timeLeft = 2;
-        const timerEl = document.getElementById('timer');
-        const countdownEl = document.getElementById('countdown');
+        (function() {
+            // Configurações
+            const REDIRECT_DELAY_MS = 2000;
+            let timeLeft = 2;
 
-        const countdown = setInterval(() => {
-            timeLeft--;
-            if (timerEl && timeLeft > 0) {
-                timerEl.textContent = timeLeft;
-            } else {
-                clearInterval(countdown);
-                // Opcional: esconder countdown quando zerar
-                if (countdownEl) {
-                    countdownEl.style.opacity = '0.5';
+            // Elementos
+            const timerEl = document.getElementById('timer');
+            const countdownEl = document.getElementById('countdown');
+            const whatsappBtn = document.getElementById('whatsapp-btn');
+
+            // Countdown
+            const countdownInterval = setInterval(() => {
+                timeLeft--;
+
+                if (timerEl) {
+                    timerEl.textContent = timeLeft;
                 }
-            }
-        }, 1000);  <!-- ✅ Corrigido: 1000ms (1 segundo) -->
 
-        <!-- Redirect final -->
-        setTimeout(() => {
-            window.location.href = 'https://wa.me/5521980927987?text=Olá! Vi seu post no grupo e gostaria de fazer meu pedido de Marmita Fit!';
-        }, 2000);
+                if (timeLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    if (countdownEl) {
+                        countdownEl.classList.add('fade-out');
+                    }
+                }
+            }, 1000);
+
+            // Clique manual cancela timer
+            if (whatsappBtn) {
+                whatsappBtn.addEventListener('click', () => {
+                    clearInterval(countdownInterval);
+                });
+            }
+
+            // Redirect final
+            setTimeout(() => {
+                window.location.href = 'https://wa.me/5521980927987?text=Olá! Vi seu post no grupo e gostaria de fazer meu pedido de Marmita Fit!';
+            }, REDIRECT_DELAY_MS);
+        })();
     </script>
 </body>
-
 </html>
