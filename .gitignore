@@ -1,0 +1,33 @@
+# ===== PYTHON / BUILD =====
+__pycache__/
+*.pyc
+src/__pycache__/
+venv/
+env/
+
+# ===== IMAGENS TEMPORÁRIAS =====
+*.jpg.bak
+*.png.bak
+*_backup.*
+*_temp.*
+
+# ===== ARQUIVOS GERADOS =====
+redirects/*/index.html.bak
+
+# ===== CONFIGS LOCAIS =====
+config.local.json
+.env
+.DS_Store
+
+# ===== IDEs / SISTEMA =====
+.vscode/settings.json
+.idea/
+*.swp
+*~
+
+# ===== LOGS =====
+*.log
+
+# ===== OS =====
+Thumbs.db
+

@@ -1,13 +1,11 @@
 {
   "title": "Marmita Fit da Camilla 🍃",
   "description": " ",
-  "image": "natal_v1.png",
-  "url": "https://marmitafitcamilla.github.io/links/",
-  "path": "htmls/natal",
+  "image": "image4.jpg",
+  "output_path": "d",
   "phone_number": "5521980927987",
   "message": "Olá! Vi seu post no grupo e gostaria de fazer meu pedido de Marmita Fit!",
   "button_text": "💬 Enviar mensagem no WhatsApp",
   "primary_color": "#25D366",
-  "redirect_delay": 1500
+  "redirect_delay": 2
 }
-

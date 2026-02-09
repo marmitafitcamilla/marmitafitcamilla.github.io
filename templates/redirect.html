@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Meta Refresh (redirect automático) -->
+    <meta http-equiv="refresh" content="{{REDIRECT_DELAY}}">
+
+    <!-- Open Graph / WhatsApp Preview -->
+    <meta property="og:title" content="{{TITLE}}">
+    <meta property="og:description" content="{{DESCRIPTION}}">
+    <meta property="og:image" content="{{IMAGE_URL}}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="{{REDIRECT_URL}}">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{TITLE}}">
+    <meta name="twitter:description" content="{{DESCRIPTION}}">
+    <meta name="twitter:image" content="{{IMAGE_URL}}">
+
+    <title>{{TITLE}}</title>
+
+    <style>
+        :root {
+            --primary-color: {{PRIMARY_COLOR}};
+            --card-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            --border-radius: 24px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            color: white;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image:hover {
+            transform: scale(1.02);
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--primary-color);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            font-weight: 700;
+            margin: 1.5rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 45px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .countdown {
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        #timer {
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            background: rgba(255,255,255,0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            display: inline-block;
+            min-width: 2ch;
+        }
+
+        /* Responsivo */
+        @media (max-width: 480px) {
+            .container {
+                padding: 2rem 1.5rem;
+                margin: 1rem;
+            }
+
+            .hero-image {
+                max-width: 100%;
+                height: 180px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animação de fade out quando countdown zerar */
+        .countdown.fade-out {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="{{IMAGE_LOGO}}" alt="{{TITLE}}" class="hero-image">
+
+        <h1>{{TITLE}}</h1>
+        <p>{{DESCRIPTION}}</p>
+
+        <a href="{{WHATSAPP_URL}}" class="whatsapp-btn" id="whatsapp-btn">
+            {{BUTTON_TEXT}}
+        </a>
+
+        <div class="countdown" id="countdown">
+            Redirecionando em <span id="timer">{{TIMER_INITIAL}}</span> segundos...
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // Configurações
+            const REDIRECT_DELAY_MS = {{REDIRECT_DELAY_MS}};
+            let timeLeft = {{TIMER_INITIAL}};
+
+            // Elementos
+            const timerEl = document.getElementById('timer');
+            const countdownEl = document.getElementById('countdown');
+            const whatsappBtn = document.getElementById('whatsapp-btn');
+
+            // Countdown
+            const countdownInterval = setInterval(() => {
+                timeLeft--;
+
+                if (timerEl) {
+                    timerEl.textContent = timeLeft;
+                }
+
+                if (timeLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    if (countdownEl) {
+                        countdownEl.classList.add('fade-out');
+                    }
+                }
+            }, 1000);
+
+            // Clique manual cancela timer
+            if (whatsappBtn) {
+                whatsappBtn.addEventListener('click', () => {
+                    clearInterval(countdownInterval);
+                });
+            }
+
+            // Redirect final
+            setTimeout(() => {
+                window.location.href = '{{WHATSAPP_URL}}';
+            }, REDIRECT_DELAY_MS);
+        })();
+    </script>
+</body>
+</html>
