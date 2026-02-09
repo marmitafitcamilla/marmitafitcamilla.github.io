@@ -1,70 +1,109 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marmita Fit da Camilla 🍃</title>
+    <meta name="description" content=" ">
 
-  <!-- 🔒 Meta tags OG -->
-  <meta property="og:title" content="Marmita Fit da Camilla 🍃" />
-  <meta property="og:description" content=" " />
-  <meta property="og:image" content="https://marmitafitcamilla.github.io/links/images/image4.jpg" />
-  <meta property="og:url" content="https://marmitafitcamilla.github.io/links/htmls/d" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Marmita Fit da Camilla 🍃">
+    <meta property="og:description" content=" ">
+    <meta property="og:image" content="https://marmitafitcamilla.github.io/marmitafitcamilla.github.io/images/og/image4.jpg">
+    <meta property="og:url" content="https://marmitafitcamilla.github.io/marmitafitcamilla.github.io/redirects/d">
 
-  <title>Marmita Fit da Camilla 🍃</title>
+    <!-- Meta Refresh (redirect automático) -->
+    <meta http-equiv="refresh" content="{{REDIRECT_DELAY}}">
 
-  <style>
-    body {
-      text-align: center;
-      font-family: "Segoe UI", Roboto, sans-serif;
-      background-color: #fff;
-      margin: 0;
-      padding: 50px 20px;
-      color: #333;
-    }
-    img {
-      max-width: 300px;
-      border-radius: 16px;
-      margin-bottom: 20px;
-    }
-    h1 {
-      margin-bottom: 10px;
-    }
-    p {
-      font-size: 18px;
-      margin: 10px 0;
-    }
-    a.button {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 15px 35px;
-      color: white;
-      text-decoration: none;
-      border-radius: 12px;
-      font-size: 20px;
-      font-weight: bold;
-      background-color: #25D366;
-    }
-  </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 500px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #25D366;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
+        }
+
+        .countdown {
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            opacity: 0.9;
+        }
+    </style>
 </head>
-
 <body>
+    <div class="container">
+        <h1>Marmita Fit da Camilla 🍃</h1>
+        <p> </p>
 
-  <img src="https://marmitafitcamilla.github.io/links/images/image4.jpg" alt="Imagem" />
+        <a href="https://wa.me/5521980927987?text=Olá! Vi seu post no grupo e gostaria de fazer meu pedido de Marmita Fit!" class="whatsapp-btn" id="whatsapp-btn">
+            💬 Enviar mensagem no WhatsApp
+        </a>
 
-  <h1>Marmita Fit da Camilla 🍃</h1>
+        <div class="countdown" id="countdown">
+            Redirecionando em <span id="timer">3</span> segundos...
+        </div>
+    </div>
 
-  <p> </p>
+    <script>
+        let timeLeft = {{REDIRECT_DELAY}};
+        const timerEl = document.getElementById('timer');
 
-  <a class="button" href="https://wa.me/5521980927987?text=Olá!%20Vi%20seu%20post%20no%20grupo%20e%20gostaria%20de%20fazer%20meu%20pedido%20de%20Marmita%20Fit!">💬 Enviar mensagem no WhatsApp</a>
-
-  <script>
-    setTimeout(() => {
-      window.location.href = "https://wa.me/5521980927987?text=Olá!%20Vi%20seu%20post%20no%20grupo%20e%20gostaria%20de%20fazer%20meu%20pedido%20de%20Marmita%20Fit!";
-    }, 1500);
-  </script>
-
+        const countdown = setInterval(() => {
+            timeLeft--;
+            if (timerEl && timeLeft > 0) {
+                timerEl.textContent = timeLeft;
+            } else {
+                clearInterval(countdown);
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
