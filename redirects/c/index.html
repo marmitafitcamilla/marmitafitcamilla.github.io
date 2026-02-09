@@ -9,11 +9,11 @@
     <!-- Open Graph -->
     <meta property="og:title" content="Marmita Fit da Camilla 🍃">
     <meta property="og:description" content=" ">
-    <meta property="og:image" content="https://marmitafitcamilla.github.io/marmitafitcamilla.github.io/images/redirects/image3.jpg">
-    <meta property="og:url" content="https://marmitafitcamilla.github.io/marmitafitcamilla.github.io/redirects/c">
+    <meta property="og:image" content="https://marmitafitcamilla.github.io/images/og/image3.jpg">
+    <meta property="og:url" content="https://marmitafitcamilla.github.io/redirects/c">
 
     <!-- Meta Refresh (redirect automático) -->
-    <meta http-equiv="refresh" content="{{REDIRECT_DELAY}}">
+    <meta http-equiv="refresh" content="2">
 
     <style>
         * {
@@ -33,6 +33,16 @@
             text-align: center;
             color: white;
             padding: 2rem;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
 
         .container {
@@ -80,21 +90,22 @@
 </head>
 <body>
     <div class="container">
+        <img src="https://marmitafitcamilla.github.io/images/og/og-logo.png" alt="Marmita Fit da Camilla 🍃" class="hero-image">
         <h1>Marmita Fit da Camilla 🍃</h1>
         <p> </p>
 
         <a href="https://wa.me/5521980927987?text=Olá! Vi seu post no grupo e gostaria de fazer meu pedido de Marmita Fit!" class="whatsapp-btn" id="whatsapp-btn">
             💬 Enviar mensagem no WhatsApp
         </a>
-
         <div class="countdown" id="countdown">
-            Redirecionando em <span id="timer">3</span> segundos...
+            Redirecionando em <span id="timer">2</span> segundos...
         </div>
     </div>
 
     <script>
-        let timeLeft = {{REDIRECT_DELAY}} / 1000;
+        let timeLeft = 2;
         const timerEl = document.getElementById('timer');
+        const countdownEl = document.getElementById('countdown');
 
         const countdown = setInterval(() => {
             timeLeft--;
@@ -102,8 +113,18 @@
                 timerEl.textContent = timeLeft;
             } else {
                 clearInterval(countdown);
+                // Opcional: esconder countdown quando zerar
+                if (countdownEl) {
+                    countdownEl.style.opacity = '0.5';
+                }
             }
-        }, 1000);
+        }, 1000);  <!-- ✅ Corrigido: 1000ms (1 segundo) -->
+
+        <!-- Redirect final -->
+        setTimeout(() => {
+            window.location.href = 'https://wa.me/5521980927987?text=Olá! Vi seu post no grupo e gostaria de fazer meu pedido de Marmita Fit!';
+        }, 2000);
     </script>
 </body>
+
 </html>
