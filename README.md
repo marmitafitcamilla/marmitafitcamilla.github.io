@@ -54,4 +54,4 @@ Depois basta submeter o caminho do novo HTML para o GitHub.
     ├── redirect.html
     └── template.html
 ```
-teste
+
