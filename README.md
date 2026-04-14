@@ -35,6 +35,7 @@ Depois basta submeter o caminho do novo HTML para o GitHub.
 
 ---
 ## Estrutura do projeto
+```
 .
 ├── index.html
 ├── favicon.png
@@ -52,3 +53,5 @@ Depois basta submeter o caminho do novo HTML para o GitHub.
 └── templates
     ├── redirect.html
     └── template.html
+```
+
